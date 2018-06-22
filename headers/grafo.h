@@ -1,5 +1,5 @@
-#ifndef LISTA_H_INCLUDED
-#define LISTA_H_INCLUDED
+#ifndef GRAFO_H_INCLUDED
+#define GRAFO_H_INCLUDED
 
 //---Lista.h---///
 //---Structs---///
@@ -38,4 +38,4 @@
 //---Trash---///
     int validaGrafo(Grafo* grafo, int origem, int destino, float peso);
         
-#endif //!LISTA_H_INCLUDED
+#endif //!GRAFO_H_INCLUDED
