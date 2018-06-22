@@ -29,15 +29,7 @@
             printf("Vértice %d vai receber sua primeira aresta\n",origem);
             primeiraAresta(grafo, origem, destino, peso);
         }
-        /*Minha parte*/
-        else{
-            printf("Inserindo aresta na lista de adjacência do vértice %d\n",origem);
-            printf("NO índice %d da lista\n",getGrau(grafo,origem));
-            grafo->vertice[origem].listaAresta = (Adjacencia*)malloc(sizeof(Adjacencia));
-            grafo->vertice[origem].listaAresta[getGrau(grafo,origem)].size = 1;
-            grafo->vertice[origem].listaAresta[getGrau(grafo,origem)].destino = destino;
-            grafo->vertice[origem].listaAresta[getGrau(grafo,origem)].peso = peso;
-        }
+        
         nextGrau(grafo, origem);
     }
 
