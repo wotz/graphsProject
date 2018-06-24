@@ -1,5 +1,5 @@
-#ifndef LISTA_H_INCLUDED
-#define LISTA_H_INCLUDED
+#ifndef GRAFO_H_INCLUDED
+#define GRAFO_H_INCLUDED
 
 //---Lista.h---//
 //---Structs---//
@@ -19,32 +19,41 @@
     }Grafo;
 
 //---Getter e Setters e Semelhantes---//
+
     int getSize(Grafo* grafo);
+
     int getGrau(Grafo* grafo, int v);
+
+    float getPeso(Grafo* grafo, int v, int a); 
+
     void setGrau(Grafo* grafo, int v, int grau);
+
     void nextGrau(Grafo* grafo, int v);
 
 //---Creators(Gods)---//
+
     void criaAresta(Grafo* grafo, int origem, int destino, float peso);
+
     Grafo* criaGrafo(int n);
-    void primeiraAresta(Grafo* grafo, int origem, int destino, float peso);         
+
+    void primeiraAresta(Grafo* grafo, int origem, int destino, float peso);  
+
     void pushAresta(Grafo* grafo, int origem, int destino, float peso);
     
-//---Printters---//
-    void imprimeGrafo(Grafo* grafo);   
-    void imprimeAresta(Grafo* grafo, int origem, int n);
-
-//---Trash---///
-    int validaGrafo(Grafo* grafo, int origem, int destino, float peso);
-
-//--- Funções de manipulação avançada de Vertices---//
-    void adicionaAresta(Grafo* grafo, int a, int b, float peso);
 //---Funções de Validação---//
+
     int validaGrafo(Grafo* grafo, int a, int b, float peso);
+
 //---Funções de Adição de Arestas---//
+
+    void adicionaAresta(Grafo* grafo, int a, int b, float peso);
+
     void add(Grafo* grafo, int a, int b, float peso);
+
     void addAlocando(Grafo* grafo, int a, int b, float peso);
+
     void addRealocando(Grafo* grafo, int a, int b, float peso);
     
-       
+//---Utils---//
+    int buscaVerticeAdj(Grafo* grafo, int u, int v);   
 #endif // LISTA_H_INCLUDED

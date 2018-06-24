@@ -1,16 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "headers/grafo.h"
-//Getters
+
+
+//---Getter e Setters e Semelhantes---//
+
     int getSize(Grafo* grafo){
         return grafo->size;
     }
-    int getGrau(Grafo* grafo, int a){
-        return grafo->vertice[a].grau;
+    int getGrau(Grafo* grafo, int v){
+        return grafo->vertice[v].grau;
     }
-
-//Setters
-
+    float getPeso(Grafo* grafo, int v, int a){
+        return grafo->vertice[v].listaAresta[a].peso;
+    }
     void setGrau(Grafo* grafo, int a, int grau){
         grafo->vertice[a].grau =  grau;
     }
@@ -19,24 +22,7 @@
         grafo->vertice[a].grau++;
     }
 
-
-
-//Funções de manipulação avançada de Vertices
-    void adicionaAresta(Grafo* grafo, int a, int b, float peso){
-        a--;
-        b--;
-        // Se o gráfico não passar na validação feche na ignorância o programa
-        if (!validaGrafo(grafo, a, b, peso)) {
-            printf("Com grandes poderes vem grandes responsabilidades, tome cuidado ao passar coisas zoadas pro meu grafo\n");
-            exit(1);
-        }
-        add(grafo, a, b, peso);
-        nextGrau(grafo, a);
-        nextGrau(grafo, b);
-        
-    }
-
-// Gria crafos gom n vertiges
+//---Creators(Gods)---//
     Grafo* criaGrafo(int n){
         
         //Aloca grafo e vetor de vertices
@@ -52,28 +38,8 @@
         return grafo;
     }
 
-
-//Printters 
-    void imprimeGrafo(Grafo* grafo){
-        for (int i = 0; i < grafo->size; i++) {
-            for(int j = 0; j < getGrau(grafo, i); j++){
-                imprimeAresta(grafo, i, j);
-            }
-            printf("\n");
-        }
-    }
-    void imprimeAresta(Grafo* grafo, int a, int n){
-        if (n >= getGrau(grafo, a)) {
-            printf("Estou evitando um nullpointer: voce esta imprimindo uma aresta que não existe, se liga.\n");
-            exit(1);
-        }
-        printf("origem: %d ", a + 1);
-        printf("destino: %d ", grafo->vertice[a].listaAresta[n].destino + 1);
-        printf("Peso: %.2f ", grafo->vertice[a].listaAresta[n].peso);
-        printf("\n");
-    }
-
-//Funções de Validação
+//---Funções de Validação---//
+    
     int validaGrafo(Grafo* grafo, int a, int b, float peso){
         if (a == b) {
             return 0;
@@ -94,7 +60,19 @@
         return 1;    
     }
 
-//Funções de Adição de Arestas: se estivessemos em uma linguagem oo essas funções seriam privadas pra evitar m3rD45
+//---Funções de Adição de Arestas---//
+
+    void adicionaAresta(Grafo* grafo, int a, int b, float peso){
+        // Se o gráfico não passar na validação feche na ignorância o programa
+        if (!validaGrafo(grafo, a, b, peso)) {
+            printf("Aresta Inválida!\n");
+            exit(1);
+        }
+        add(grafo, a, b, peso);
+        nextGrau(grafo, a);
+        nextGrau(grafo, b);
+        
+    }
     void add(Grafo* grafo, int a, int b, float peso){
         int grauA = getGrau(grafo, a);
         int grauB = getGrau(grafo, b);
@@ -114,14 +92,14 @@
         
         }
 
-        // realoque b e aloque a
+        // realoque a e aloque b
         if(grauA > 0 && grauB == 0){
             addRealocando(grafo, a, b, peso);
             addAlocando(grafo, b, a, peso);
             return;
         }
 
-        // realoque b e realoque a
+        // realoque a e realoque b
         addRealocando(grafo, a, b, peso);
         addRealocando(grafo, b, a, peso);
 
@@ -140,4 +118,17 @@
         grafo->vertice[a].listaAresta = realloc(grafo->vertice[a].listaAresta, n * sizeof(Adjacencia));
         grafo->vertice[a].listaAresta[n - 1].destino = b;
         grafo->vertice[a].listaAresta[n - 1].peso = peso;
+    }
+
+//---Utils---//
+    /*
+        Retorna o indice do vertice na lista de arestas do vertice u
+    */
+    int buscaVerticeAdj(Grafo* grafo, int u, int v){
+        for(int i = 0; i < getGrau(grafo, u); i++){
+            if(grafo->vertice->listaAresta[i].destino == v){
+                return  i;
+            }
+        }
+        return -1;
     }
