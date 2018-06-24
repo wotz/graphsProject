@@ -14,7 +14,7 @@
         int size = getSize(grafo);
         float* d = (float*)malloc(size*sizeof(float));
         bool aberto[size];
-        incializaD(grafo, d, 0);
+        incializaD(grafo, d, s);
         incializaAberto(aberto, size);
 
         while(existeAberto(aberto, size)){
