@@ -1,16 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "headers/grafo.h"
+#include "headers/data.h"
+#include "headers/mst.h"
 #include "headers/dijkstra.h"
 #include "headers/printter.h"
 #include <limits.h>
 
-
-
-
-
-
-int main(){
+int main(int argc, char* argv[]){
+    Grafo* grafoIn = recebeDados(argc,argv);
     Grafo* grafo = criaGrafo(5);
     adicionaAresta(grafo, 0, 1, 0.1f);
     adicionaAresta(grafo, 1, 4, 0.2f);
@@ -18,6 +16,9 @@ int main(){
     adicionaAresta(grafo, 2, 3, 9.5f);
     adicionaAresta(grafo, 3, 4, 2.3f);
     adicionaAresta(grafo, 0, 4, 1.0f);
+
+    imprimeGrafo(grafoIn);
+
     Grafo* grafB = criaGrafo(5);
     adicionaAresta(grafB, 0, 1, 0.1f);
     adicionaAresta(grafB, 0, 2, 0.99f);
@@ -30,15 +31,25 @@ int main(){
     adicionaAresta(grafB, 2, 4, 0.34f);
     adicionaAresta(grafB, 3, 4, 0.47f);
     
-    
+    Grafo* grafoC = criaGrafo(8);
+    adicionaAresta(grafoC, 0, 1, 6.0f);
+    adicionaAresta(grafoC, 0, 2, 5.0f);
+    adicionaAresta(grafoC, 0, 3, 14.0f);
+    adicionaAresta(grafoC, 0, 4, 10.0f);
+    adicionaAresta(grafoC, 3, 4, 3.0f);
+    adicionaAresta(grafoC, 1, 2, 4.0f);
+    adicionaAresta(grafoC, 2, 5, 2.0f);
+    adicionaAresta(grafoC, 4, 5, 8.0f);
+    adicionaAresta(grafoC, 2, 6, 9.0f);
+    adicionaAresta(grafoC, 5, 7, 15.0f);
 
-    float* d = dijkstra(grafB, 2);
-    imprimeDistancia(d, getSize(grafB));
-    printf("\n\n");
-    d = dijkstra(grafB,  0);
-    imprimeDistancia(d, getSize(grafB));
+    Grafo* tree = mstPrim(grafoIn,0);
 
+    float* d = dijkstra(grafoIn, 2);
+    imprimeDistancia(d, getSize(grafoIn));
+    //printf("\n\n");
+    //d = dijkstra(grafB,  0);
+    //imprimeDistancia(d, getSize(grafB));
 
-    
     return 0;
 }

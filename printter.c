@@ -10,6 +10,7 @@
     void imprimeGrafo(Grafo* grafo){
         for (int i = 0; i < grafo->size; i++) {
             for(int j = 0; j < getGrau(grafo, i); j++){
+                printf("Imp: %d %d\n",i,j);
                 imprimeAresta(grafo, i, j);
             }
             printf("\n");

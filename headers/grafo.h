@@ -10,6 +10,8 @@
 
     typedef struct vertice{
         int grau;
+        double valor;
+        int statusMST;
         Adjacencia* listaAresta;
     }Vertice;
 
@@ -33,8 +35,10 @@
 //---Creators(Gods)---//
 
     void criaAresta(Grafo* grafo, int origem, int destino, float peso);
-
+    
     Grafo* criaGrafo(int n);
+
+    Grafo* copiaGrafo(Grafo* grafo);
 
     void primeiraAresta(Grafo* grafo, int origem, int destino, float peso);  
 
