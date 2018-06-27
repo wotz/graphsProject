@@ -2,23 +2,33 @@
 #include <stdlib.h>
 #include "headers/grafo.h"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 61a9ba5200b4949d160827bbda36775115340a0e
 //---Getter e Setters e Semelhantes---//
 
     int getSize(Grafo* grafo){
         return grafo->size;
     }
+<<<<<<< HEAD
     int getEdge(Grafo* grafo){
         return grafo->edge;
     }
+=======
+>>>>>>> 61a9ba5200b4949d160827bbda36775115340a0e
     int getGrau(Grafo* grafo, int v){
         return grafo->vertice[v].grau;
     }
     float getPeso(Grafo* grafo, int v, int a){
         return grafo->vertice[v].listaAresta[a].peso;
     }
+<<<<<<< HEAD
     void setEdge(Grafo* grafo, int E){
         grafo->edge = E;
     }
+=======
+>>>>>>> 61a9ba5200b4949d160827bbda36775115340a0e
     void setGrau(Grafo* grafo, int a, int grau){
         grafo->vertice[a].grau =  grau;
     }
@@ -43,6 +53,22 @@
         return grafo;
     }
 
+<<<<<<< HEAD
+=======
+
+    Grafo* copiaGrafo(Grafo* grafo){
+        Grafo* copia = (Grafo*)malloc(sizeof(Grafo));
+        Vertice* v = (Vertice*)malloc(getSize(grafo)*sizeof(Vertice));
+
+        for (int i = 0; i < grafo->size; i++) {
+            for(int j = 0; j < getGrau(grafo, i); j++){
+                printf("add: %d %d %f\n",i,grafo->vertice[i].listaAresta[j].destino, getPeso(grafo,i,grafo->vertice[i].listaAresta[j].destino));
+                //adicionaAresta(copia,i,grafo->vertice[i].listaAresta[j].destino,getPeso(grafo,i,0.1f));
+            }
+        }
+        return copia;
+    }
+>>>>>>> 61a9ba5200b4949d160827bbda36775115340a0e
 //---Funções de Validação---//
     
     int validaGrafo(Grafo* grafo, int a, int b, float peso){
@@ -133,7 +159,11 @@
     */
     int buscaVerticeAdj(Grafo* grafo, int u, int v){
         for(int i = 0; i < getGrau(grafo, u); i++){
+<<<<<<< HEAD
             if(grafo->vertice->listaAresta[i].destino == v){
+=======
+            if(grafo->vertice[u].listaAresta[i].destino == v){
+>>>>>>> 61a9ba5200b4949d160827bbda36775115340a0e
                 return  i;
             }
         }

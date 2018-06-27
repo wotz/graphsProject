@@ -30,9 +30,14 @@ Grafo* recebeDados(int argc, char **argv){
                 printf("Este algoritmo não funciona com valores negativos para pesos de arestas,\npor favor altere a linha %d do arquivo %s\n",linha,argv[1]);
                 exit(1);
             }
+<<<<<<< HEAD
             
         }
         setEdge(grafo,linha - 1);
+=======
+            //Guardar os valores na estrutura
+        }
+>>>>>>> 61a9ba5200b4949d160827bbda36775115340a0e
     }
     fclose(arqGrafo);
 

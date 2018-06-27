@@ -8,7 +8,11 @@
 #include <limits.h>
 
 int main(int argc, char* argv[]){
+<<<<<<< HEAD
     Grafo* grafoIn = recebeDados(argc,argv);
+=======
+    // Grafo* grafoIn = recebeDados(argc,argv);
+>>>>>>> 61a9ba5200b4949d160827bbda36775115340a0e
     Grafo* grafo = criaGrafo(5);
     adicionaAresta(grafo, 0, 1, 0.1f);
     adicionaAresta(grafo, 1, 4, 0.2f);
@@ -17,7 +21,11 @@ int main(int argc, char* argv[]){
     adicionaAresta(grafo, 3, 4, 2.3f);
     adicionaAresta(grafo, 0, 4, 1.0f);
 
+<<<<<<< HEAD
     imprimeGrafo(grafoIn);
+=======
+    // imprimeGrafo(grafoIn);
+>>>>>>> 61a9ba5200b4949d160827bbda36775115340a0e
 
     Grafo* grafB = criaGrafo(5);
     adicionaAresta(grafB, 0, 1, 0.1f);
@@ -42,11 +50,22 @@ int main(int argc, char* argv[]){
     adicionaAresta(grafoC, 4, 5, 8.0f);
     adicionaAresta(grafoC, 2, 6, 9.0f);
     adicionaAresta(grafoC, 5, 7, 15.0f);
+<<<<<<< HEAD
 
     mstPrim(grafoC,0);
 
     float* d = dijkstra(grafoIn, 2);
     //imprimeDistancia(d, getSize(grafoIn));
+=======
+    float* d = dijkstra(grafo, 0);
+    // imprimeGrafo(grafo);
+    
+    resultadoDijkstra(grafo, d, 1, 3);
+    // Grafo* tree = mstPrim(grafoIn,0);
+
+    // float* d = dijkstra(grafoIn, 2);
+    // imprimeDistancia(d, getSize(grafoIn));
+>>>>>>> 61a9ba5200b4949d160827bbda36775115340a0e
     //printf("\n\n");
     //d = dijkstra(grafB,  0);
     //imprimeDistancia(d, getSize(grafB));
