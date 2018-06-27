@@ -30,6 +30,7 @@
                 relaxa(grafo, d, u, grafo->vertice[u].listaAresta[i].destino, i);
             }
         }    
+        grafo->vertice[s].ant = -1;
         return d;
     }
 
@@ -41,6 +42,7 @@
             o peso da aresta u mais o peso de u para v 
         */ 
         if(distancia[v] > distancia[u] + getPeso(grafo, u, i)){
+            grafo->vertice[v].ant = u;
             distancia[v] = distancia[u] + getPeso(grafo, u, i);
         }
     }

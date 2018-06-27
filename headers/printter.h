@@ -9,5 +9,7 @@
     void imprimeAresta(Grafo* grafo, int a, int n);
     
     void imprimeDistancia(float* d, int size);
+
+    void resultadoDijkstra(Grafo* grafo, float* d,int origem, int destino);
     
 #endif

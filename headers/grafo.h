@@ -9,6 +9,7 @@
     }Adjacencia;
 
     typedef struct vertice{
+        int ant;
         int grau;
         double valor;
         int statusMST;

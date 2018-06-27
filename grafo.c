@@ -141,7 +141,7 @@
     */
     int buscaVerticeAdj(Grafo* grafo, int u, int v){
         for(int i = 0; i < getGrau(grafo, u); i++){
-            if(grafo->vertice->listaAresta[i].destino == v){
+            if(grafo->vertice[u].listaAresta[i].destino == v){
                 return  i;
             }
         }
