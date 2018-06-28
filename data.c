@@ -32,6 +32,7 @@ Grafo* recebeDados(int argc, char **argv){
             }
             //Guardar os valores na estrutura
         }
+        setEdge(grafo,linha - 1);
     }
     fclose(arqGrafo);
 
