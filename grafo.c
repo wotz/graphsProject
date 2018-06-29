@@ -2,17 +2,22 @@
 #include <stdlib.h>
 #include "headers/grafo.h"
 
-
 //---Getter e Setters e Semelhantes---//
 
     int getSize(Grafo* grafo){
         return grafo->size;
+    }
+    int getEdge(Grafo* grafo){
+        return grafo->edge;
     }
     int getGrau(Grafo* grafo, int v){
         return grafo->vertice[v].grau;
     }
     float getPeso(Grafo* grafo, int v, int a){
         return grafo->vertice[v].listaAresta[a].peso;
+    }
+    void setEdge(Grafo* grafo, int E){
+        grafo->edge = E;
     }
     void setGrau(Grafo* grafo, int a, int grau){
         grafo->vertice[a].grau =  grau;
@@ -38,19 +43,6 @@
         return grafo;
     }
 
-
-    Grafo* copiaGrafo(Grafo* grafo){
-        Grafo* copia = (Grafo*)malloc(sizeof(Grafo));
-        Vertice* v = (Vertice*)malloc(getSize(grafo)*sizeof(Vertice));
-
-        for (int i = 0; i < grafo->size; i++) {
-            for(int j = 0; j < getGrau(grafo, i); j++){
-                printf("add: %d %d %f\n",i,grafo->vertice[i].listaAresta[j].destino, getPeso(grafo,i,grafo->vertice[i].listaAresta[j].destino));
-                //adicionaAresta(copia,i,grafo->vertice[i].listaAresta[j].destino,getPeso(grafo,i,0.1f));
-            }
-        }
-        return copia;
-    }
 //---Funções de Validação---//
     
     int validaGrafo(Grafo* grafo, int a, int b, float peso){
@@ -76,8 +68,6 @@
 //---Funções de Adição de Arestas---//
 
     void adicionaAresta(Grafo* grafo, int a, int b, float peso){
-        a--;
-        b--;
         // Se o gráfico não passar na validação feche na ignorância o programa
         if (!validaGrafo(grafo, a, b, peso)) {
             printf("Aresta Inválida!\n");

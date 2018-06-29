@@ -16,7 +16,6 @@
         bool aberto[size];
         incializaD(grafo, d, s);
         incializaAberto(aberto, size);
-
         while(existeAberto(aberto, size)){
 
             // Seleciona o vértice de menor distância até o momento
@@ -24,14 +23,14 @@
             
             // Fecha o vértice selecionado
             aberto[u] = false;
-            
+
             // Percorre a lista de adjacencia de u relaxando as arestas
-            for(int i = 0; i < getGrau(grafo, u); i++){
+            for(int i = 0; i < getGrau(grafo, u) && getGrau(grafo, u) > 0; i++){
                 relaxa(grafo, d, u, grafo->vertice[u].listaAresta[i].destino, i);
             }
         }    
-        grafo->vertice[s].ant = -1;
         return d;
+        
     }
 
     // Atualiza na lista de distâncias as passíveis de serem atualizadas
@@ -52,15 +51,19 @@
      */
     int menorDist(Grafo* g, bool* aberto, float* d){
         int  i;
+        // Descobre o primeiro aberto
         for(i=0; i < g->size; i++){
             if(aberto[i]){
                 break;
             }
         }
+        // Verifica se o grafo está todo fechado
         if(i == g->size){
             return -1;
         }
         int menor = i;
+
+        // Seleciona o menor aberto
         for(i = i +1; i < g->size; i++){
             if(aberto[i] && (d[menor]) > d[i]){
                 menor = i;
@@ -99,13 +102,3 @@
             aberto[i] = true;
         }
     }
-
-
-
-
-
-
-
-
-
-

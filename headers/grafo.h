@@ -9,8 +9,8 @@
     }Adjacencia;
 
     typedef struct vertice{
-        int ant;
         int grau;
+        int ant;
         double valor;
         int statusMST;
         Adjacencia* listaAresta;
@@ -18,6 +18,7 @@
 
     typedef struct grafo{
         int size;
+        int edge;
         Vertice* vertice;
     }Grafo;
 
@@ -25,9 +26,13 @@
 
     int getSize(Grafo* grafo);
 
+    int getEdge(Grafo* grafo);
+
     int getGrau(Grafo* grafo, int v);
 
     float getPeso(Grafo* grafo, int v, int a); 
+
+    void setEdge(Grafo* grafo, int E);
 
     void setGrau(Grafo* grafo, int v, int grau);
 
@@ -38,8 +43,6 @@
     void criaAresta(Grafo* grafo, int origem, int destino, float peso);
     
     Grafo* criaGrafo(int n);
-
-    Grafo* copiaGrafo(Grafo* grafo);
 
     void primeiraAresta(Grafo* grafo, int origem, int destino, float peso);  
 

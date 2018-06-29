@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include "headers/printter.h"
+#include "headers/mst.h"
 #include "headers/grafo.h"
 #define INFINITO INT_MAX/2.0f
 
@@ -43,22 +44,21 @@
     }
 
     void resultadoDijkstra(Grafo* grafo, float* d, int origem, int destino){
+        
+        if (d[destino] == INFINITO){
+            printf("O vértice %d não é alcançável a partir de %d\n", destino + 1, origem + 1);
+            return;
+        }
+        
         int size = getSize(grafo);
         int i, j = size - 1;
         int back[size];
         float peso = 0.0f;
-        origem--;
-        destino--;
         
-        if (d[destino] == INFINITO){
-            printf("O vértice %d não é alcançável a partir de %d ", destino + 1, origem + 1);
-            return;
-        }
-
         for(int cont = 0; cont < size; cont++){
             back[cont] = -1;
         }
-
+       
         back[j] = destino;
         j--;
         for(i = destino;  i != origem; ){
@@ -73,4 +73,15 @@
             imprimeAresta(grafo, back[j], temp);
         }
         printf("O custo total para ir de %d à %d é %.2f\n", origem + 1, destino + 1, peso);
+    }
+
+    void imprimeMST(Grafo* grafo, Aresta* mstArestas){
+        float pesoMST = 0;
+        printf("%d\n",getSize(grafo)-1);
+        for(int u = 0;u < getSize(grafo); u++){
+            pesoMST += mstArestas[u].peso;
+            //if(mstArestas[u].peso != 0.0)
+                printf("%d %d %f\n",mstArestas[u].a,mstArestas[u].b,mstArestas[u].peso);
+        }
+        printf("%f\n",pesoMST);
     }
