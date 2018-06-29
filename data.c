@@ -3,7 +3,6 @@
 #include "headers/grafo.h"
 #include "headers/data.h"
 
-
 Grafo* recebeDados(int argc, char **argv){
     int numVertices;
     int aresta1,aresta2;
@@ -25,15 +24,15 @@ Grafo* recebeDados(int argc, char **argv){
             //printf("%d %d %lf\n",aresta1,aresta2,weight);
 
             //QUESTÃO DA INDEXAÇÃO
-            criaAresta(grafo,aresta1-1,aresta2-1,weight);
+            adicionaAresta(grafo,aresta1-1,aresta2-1,weight);
             if(weight < 0){
                 printf("ERRO 3: peso de aresta negativo\n");
                 printf("Este algoritmo não funciona com valores negativos para pesos de arestas,\npor favor altere a linha %d do arquivo %s\n",linha,argv[1]);
                 exit(1);
             }
-
             //Guardar os valores na estrutura
         }
+        setEdge(grafo,linha - 1);
     }
     fclose(arqGrafo);
 
