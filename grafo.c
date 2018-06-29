@@ -63,6 +63,8 @@
 //---Funções de Adição de Arestas---//
 
     void adicionaAresta(Grafo* grafo, int a, int b, float peso){
+        a--;
+        b--;
         // Se o gráfico não passar na validação feche na ignorância o programa
         if (!validaGrafo(grafo, a, b, peso)) {
             printf("Aresta Inválida!\n");

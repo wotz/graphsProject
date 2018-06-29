@@ -11,6 +11,8 @@
 
 
 int main(){
+
+    // Grafo do exemplo
     Grafo* grafo = criaGrafo(5);
     adicionaAresta(grafo, 0, 1, 0.1f);
     adicionaAresta(grafo, 1, 4, 0.2f);
@@ -18,6 +20,8 @@ int main(){
     adicionaAresta(grafo, 2, 3, 9.5f);
     adicionaAresta(grafo, 3, 4, 2.3f);
     adicionaAresta(grafo, 0, 4, 1.0f);
+    
+    // Grafo completamente conectado
     Grafo* grafB = criaGrafo(5);
     adicionaAresta(grafB, 0, 1, 0.1f);
     adicionaAresta(grafB, 0, 2, 0.99f);
@@ -30,10 +34,15 @@ int main(){
     adicionaAresta(grafB, 2, 4, 0.34f);
     adicionaAresta(grafB, 3, 4, 0.47f);
     
+    // Grafo desconexo
+    Grafo* grafC = criaGrafo(5);
+    adicionaAresta(grafC, 0, 1, 0.47f);
+    adicionaAresta(grafC, 1, 2, 2.47f);
+    adicionaAresta(grafC, 3, 4, 0.47f);
     
 
-    float* d = dijkstra(grafB, 2);
-    imprimeDistancia(d, getSize(grafB));
+    float* d = dijkstra(grafC, 0);
+    imprimeDistancia(d, getSize(grafC));
     printf("\n\n");
     d = dijkstra(grafB,  0);
     imprimeDistancia(d, getSize(grafB));
