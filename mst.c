@@ -74,16 +74,16 @@ int minimum(Vertice* lista, int V){
     int minInd;;
     int i,indAdj;
     int existeMenor = 0;
-    printf("Buscando o mínimo:\n");
+    //printf("Buscando o mínimo:\n");
     for(int indAdj = 0; indAdj < V; indAdj++){
-        printf("%f %d\n",lista[indAdj].valor,lista[indAdj].statusMST);
+        //printf("%f %d\n",lista[indAdj].valor,lista[indAdj].statusMST);
         if(lista[indAdj].valor < min && lista[indAdj].statusMST == 0){
             min = lista[indAdj].valor;
             minInd = indAdj;
             existeMenor = 1;
         }
     }
-    printf("-----------------------\n");
+    //printf("-----------------------\n");
     if(existeMenor)
         return minInd;
     else
@@ -96,8 +96,6 @@ Grafo* mstKruskal(Grafo* grafo){
     Aresta *e = (Aresta*)malloc((E+1)*sizeof(Aresta));
     int *ch = (int*)malloc((E+1)*sizeof(int));
     int *sz = (int*)malloc((E+1)*sizeof(int));
-
-
     return grafo;
 }
 

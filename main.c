@@ -9,12 +9,12 @@
 
 int main(int argc, char* argv[]){
     Grafo* grafoIn = recebeDados(argc,argv);
-    imprimeGrafo(grafoIn);
+    //imprimeGrafo(grafoIn);
     
     mstPrim(grafoIn,0);
-    float* d = dijkstra(grafoIn, 2);
+    //float* d = dijkstra(grafoIn, 0);
     printf("Dijkstra\n");
-    resultadoDijkstra(grafoIn, d, 1, 2);
+    //resultadoDijkstra(grafoIn, d, 1, 2);
 
     // float* d = dijkstra(grafoIn, 2);
     // imprimeDistancia(d, getSize(grafoIn));
