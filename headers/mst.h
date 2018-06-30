@@ -7,7 +7,7 @@ typedef struct aresta{
     float peso;
 }Aresta;
 
-void mstPrim(Grafo* grafo, int r);
+Aresta* mstPrim(Grafo* grafo, int r);
 Grafo* mstKruskal(Grafo* grafo);
 void inicializaMST(Grafo* tree);
 int minimum(Vertice* lista, int V);

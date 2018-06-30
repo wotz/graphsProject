@@ -8,7 +8,7 @@
 
 #define INFINITO (float)INT_MAX/2.0f
 
-void mstPrim(Grafo* grafo, int r){
+Aresta* mstPrim(Grafo* grafo, int r){
     int atribui = 1;
     Vertice* lista = (Vertice*)malloc(getSize(grafo)*sizeof(Vertice));
     Aresta* mstArestas = (Aresta*)malloc(getSize(grafo)*sizeof(Aresta));
@@ -66,7 +66,7 @@ void mstPrim(Grafo* grafo, int r){
         }
         count++;
     }
-    imprimeMST(grafo,mstArestas);
+    return mstArestas; 
 }
 
 int minimum(Vertice* lista, int V){
@@ -88,15 +88,6 @@ int minimum(Vertice* lista, int V){
         return minInd;
     else
         return -1;
-}
-
-Grafo* mstKruskal(Grafo* grafo){
-    Aresta *mst = (Aresta*) malloc ((grafo->size)*sizeof(Aresta));
-    int E = grafo->edge/2;
-    Aresta *e = (Aresta*)malloc((E+1)*sizeof(Aresta));
-    int *ch = (int*)malloc((E+1)*sizeof(int));
-    int *sz = (int*)malloc((E+1)*sizeof(int));
-    return grafo;
 }
 
 void arestaGrafo(Grafo* grafo, int V, Aresta* e){

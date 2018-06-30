@@ -22,15 +22,18 @@
             printf("Aresta Inexixtente!\n");
             exit(1);
         }
-        printf("Origem: %d ", a + 1);
-        printf("destino: %d ", grafo->vertice[a].listaAresta[n].destino + 1);
-        printf("peso: %.2f ", grafo->vertice[a].listaAresta[n].peso);
+        printf("%d ", a + 1);
+        //printf("Origem: %d ", a + 1);
+        printf("%d ",grafo->vertice[a].listaAresta[n].destino + 1);
+        //printf("destino: %d ", grafo->vertice[a].listaAresta[n].destino + 1);
+        printf("%.2f\n",grafo->vertice[a].listaAresta[n].peso);
+        //printf("peso: %.2f ", grafo->vertice[a].listaAresta[n].peso);
         if(grafo->vertice[a].ant + 1 == 0){
             printf("vertice inicial\n");
             return;
         }
-        printf("Anterior: %d ", grafo->vertice[a].ant + 1);
-        printf("\n");
+        //printf("Anterior: %d ", grafo->vertice[a].ant + 1);
+        //printf("\n");
     }
 
     void imprimeDistancia(float* d, int size){
@@ -72,16 +75,17 @@
             peso += grafo->vertice[back[j]].listaAresta[temp].peso;
             imprimeAresta(grafo, back[j], temp);
         }
-        printf("O custo total para ir de %d à %d é %.2f\n", origem + 1, destino + 1, peso);
+        printf("%.2f\n",peso);
+        //printf("O custo total para ir de %d à %d é %.2f\n", origem + 1, destino + 1, peso);
     }
 
     void imprimeMST(Grafo* grafo, Aresta* mstArestas){
         float pesoMST = 0;
-        printf("%d\n",getSize(grafo)-1);
+        printf("%d\n",getSize(grafo));
         for(int u = 0;u < getSize(grafo); u++){
             pesoMST += mstArestas[u].peso;
-            //if(mstArestas[u].peso != 0.0)
-                printf("%d %d %f\n",mstArestas[u].a,mstArestas[u].b,mstArestas[u].peso);
+            if(mstArestas[u].peso != 0.0)
+                printf("%d %d %.2f\n",mstArestas[u].a,mstArestas[u].b,mstArestas[u].peso);
         }
         printf("%f\n",pesoMST);
     }
