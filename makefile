@@ -5,4 +5,4 @@ all:
 	gcc -c dijkstra.c -o bin/dijkstra.o
 	gcc -c printter.c -o bin/printter.o
 	gcc -c main.c -o bin/main.o
-	gcc bin/* -o exit
+	gcc bin/* -o projGrafo

@@ -6,10 +6,13 @@
 #include "headers/dijkstra.h"
 #define INFINITO (float)INT_MAX/2.0f
 
-
 //---Dijkstra e Auxiliares---//
 
-    // Por enquanto gera uma lista de distância dos vértices apartir de s
+    /*Função que executa o algoritmo de Dijkstra.
+      Recebe um grafo como argumento e o número do vértice a partir do qual
+      Retorna uma lista das menores distâncias entre o vértice recebido como argumento
+      e os restantes.
+    */
     float* dijkstra(Grafo* grafo, int s){
         int size = getSize(grafo);
         float* d = (float*)malloc(size*sizeof(float));
@@ -33,7 +36,10 @@
         
     }
 
-    // Atualiza na lista de distâncias as passíveis de serem atualizadas
+    /*
+        Função que realiza uma operação de relaxação se a distância do vértice v for
+        maior que a distância do vértice u mais o peso da aresta
+    */
     void relaxa(Grafo* grafo, float* distancia, int u, int v, int i){
         
         /*
@@ -72,7 +78,7 @@
         return menor;
     }
 
-    // Existe aberto?
+    // Verifica se ainda existem vértices não visitados (aberto)
     bool existeAberto(bool* aberto, int size){
         for(int i = 0; i < size; i++){
             if(aberto[i]){
@@ -81,7 +87,6 @@
         }
         return false;
     }
-
 
 //---To Inicializar---//
 

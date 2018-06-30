@@ -9,31 +9,30 @@
 //---Printters (Hp, é claro)---//
     
     void imprimeGrafo(Grafo* grafo){
+        FILE* null;
         for (int i = 0; i < grafo->size; i++) {
             for(int j = 0; j < getGrau(grafo, i); j++){
-                imprimeAresta(grafo, i, j);
+                imprimeAresta(grafo, i, j,null);
             }
             printf("\n");
         }
     }
 
-    void imprimeAresta(Grafo* grafo, int a, int n){
+    void imprimeAresta(Grafo* grafo, int a, int n, FILE *dijkstra){
         if (n >= getGrau(grafo, a)) {
             printf("Aresta Inexixtente!\n");
             exit(1);
         }
+
         printf("%d ", a + 1);
-        //printf("Origem: %d ", a + 1);
         printf("%d ",grafo->vertice[a].listaAresta[n].destino + 1);
-        //printf("destino: %d ", grafo->vertice[a].listaAresta[n].destino + 1);
         printf("%.2f\n",grafo->vertice[a].listaAresta[n].peso);
-        //printf("peso: %.2f ", grafo->vertice[a].listaAresta[n].peso);
+        fprintf(dijkstra,"%d %d %.2f\r\n", a+1,grafo->vertice[a].listaAresta[n].destino + 1,grafo->vertice[a].listaAresta[n].peso);
+        
         if(grafo->vertice[a].ant + 1 == 0){
             printf("vertice inicial\n");
             return;
         }
-        //printf("Anterior: %d ", grafo->vertice[a].ant + 1);
-        //printf("\n");
     }
 
     void imprimeDistancia(float* d, int size){
@@ -46,7 +45,7 @@
         }
     }
 
-    void resultadoDijkstra(Grafo* grafo, float* d, int origem, int destino){
+    void resultadoDijkstra(Grafo* grafo, float* d, int origem, int destino, FILE* dijkstra){
         
         if (d[destino] == INFINITO){
             printf("O vértice %d não é alcançável a partir de %d\n", destino + 1, origem + 1);
@@ -69,23 +68,29 @@
             back[j] = i;
             j --;
         }
-
+        int numeroSaltos = size - j - 2;
+        printf("%d\n",numeroSaltos);
+        fprintf(dijkstra,"%d\r\n", numeroSaltos);
         for(j = j + 1; j < size - 1; j++){
             int temp = buscaVerticeAdj(grafo, back[j], back[j+1]);
             peso += grafo->vertice[back[j]].listaAresta[temp].peso;
-            imprimeAresta(grafo, back[j], temp);
+            imprimeAresta(grafo, back[j], temp, dijkstra);
         }
+        fprintf(dijkstra,"%.2f\r\n", peso);
         printf("%.2f\n",peso);
-        //printf("O custo total para ir de %d à %d é %.2f\n", origem + 1, destino + 1, peso);
     }
 
-    void imprimeMST(Grafo* grafo, Aresta* mstArestas){
+    void imprimeMST(Grafo* grafo, Aresta* mstArestas,FILE* mst){
         float pesoMST = 0;
         printf("%d\n",getSize(grafo));
+        fprintf(mst,"%d\r\n", getSize(grafo));
         for(int u = 0;u < getSize(grafo); u++){
             pesoMST += mstArestas[u].peso;
-            if(mstArestas[u].peso != 0.0)
+            if(mstArestas[u].peso != 0.0){
+                fprintf(mst,"%d %d %.2f\r\n",mstArestas[u].a,mstArestas[u].b,mstArestas[u].peso);
                 printf("%d %d %.2f\n",mstArestas[u].a,mstArestas[u].b,mstArestas[u].peso);
+            }
         }
-        printf("%f\n",pesoMST);
+        printf("%.2f\n",pesoMST);
+        fprintf(mst,"%.2f\r\n", pesoMST);
     }

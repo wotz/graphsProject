@@ -8,7 +8,5 @@ typedef struct aresta{
 }Aresta;
 
 Aresta* mstPrim(Grafo* grafo, int r);
-Grafo* mstKruskal(Grafo* grafo);
-void inicializaMST(Grafo* tree);
 int minimum(Vertice* lista, int V);
 #endif//! MST_H_INCLUDED

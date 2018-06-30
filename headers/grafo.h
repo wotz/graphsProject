@@ -43,10 +43,6 @@
     void criaAresta(Grafo* grafo, int origem, int destino, float peso);
     
     Grafo* criaGrafo(int n);
-
-    void primeiraAresta(Grafo* grafo, int origem, int destino, float peso);  
-
-    void pushAresta(Grafo* grafo, int origem, int destino, float peso);
     
 //---Funções de Validação---//
 

@@ -7,18 +7,23 @@
     int getSize(Grafo* grafo){
         return grafo->size;
     }
+
     int getEdge(Grafo* grafo){
         return grafo->edge;
     }
+
     int getGrau(Grafo* grafo, int v){
         return grafo->vertice[v].grau;
     }
+
     float getPeso(Grafo* grafo, int v, int a){
         return grafo->vertice[v].listaAresta[a].peso;
-    }
+    }   
+
     void setEdge(Grafo* grafo, int E){
         grafo->edge = E;
     }
+
     void setGrau(Grafo* grafo, int a, int grau){
         grafo->vertice[a].grau =  grau;
     }
